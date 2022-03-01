@@ -23,7 +23,8 @@ const displayData =(data)=>{
         div.innerHTML = `
         <div class="card">
         <div class="card-body text-center fw-bolder bg-danger rounded text-white">
-          No Phone Found!
+          <h2>No Phone Found!</h2>
+          <small>Please Search Again With Valid Phone Name, Model or Brand</small>
         </div>
       </div>
         `
@@ -41,15 +42,15 @@ const displayData =(data)=>{
                 const div = document.createElement("div");
             div.classList.add("col")
             div.innerHTML = `
-                    <div class="card h-100 "w-50">
-                        <img src="${phone.image}" class="card-img-top p-4 w-75 m-auto" alt="...">
+                    <div class="card">
+                        <img src="${phone.image}" class="card-img-top p-4 w-75 m-auto">
                         <div class="card-body">
-                            <h5 class="card-title fw-bolder">Model: ${phone.phone_name}</h5>
-                            <h5 class="card-title">Model: ${phone.brand}</h5>
+                            <h5 class="card-title fw-bolder">${phone.phone_name}</h5>
+                            <h5 class="card-title">Brand: ${phone.brand}</h5>
                         </div>
-                        <div class="card-footer">
+                        <div class="card-footer bg-white">
                             <div class="d-grid gap-2">
-                                <button class="btn btn-danger fw-bolder" type="button" onclick = "loadDetails('${phone.slug}')">Details</button>
+                                <a class="btn fw-bolder" id="details-button" onclick = "loadDetails('${phone.slug}')" href="#phone-details">Details</a>
                             </div>
                         </div>
                     </div>    
@@ -79,20 +80,23 @@ const displayDetails = (data) =>{
     toggleSpinner("none")
     phoneDetails.innerHTML = ""
     const divMainFeatures = document.createElement('div');
-    divMainFeatures.classList.add("row", "border", "rounded", "g-0", "mb-5", "d-flex", "justify-content-center");
+    divMainFeatures.classList.add("row", "g-0", "mb-5", "d-flex", "justify-content-center", "rounded");
     divMainFeatures.innerHTML = `
-    <div class="container mb-2 bg-light">
+    <div class="container mb-2" id = "details-title">
             <div class="row">
-            <div class="col-sm-12 col-md-12 col-lg-12 text-center">
+            <div class="col-sm-12 col-md-12 col-lg-12 text-center my-2">
             <h4 class="fw-bolder">${data.brand} ${data.name}</h4>
-            <small class="fw-bold">${data.releaseDate ? data.releaseDate : "no release date available"}</small>
+            <small class="fw-bold">${data.releaseDate ? data.releaseDate : "No Release Date Found"}</small>
             </div>
             </div>
-            </div>
-        <div class="col-md-3 col-lg-3 col-sm-12 p-4 text-center">
+            </div>           
+        <div class="row details-info">
+            <div class="col-md-3 col-lg-3 col-sm-12 p-4 text-center" id="details-image">
             <img class="w-100" src="${data.image}" alt="">
         </div>
-        <div class="col-md-3 col-lg-3 col-sm-12 p-4">
+        <div class="col-md-9 col-lg-9 col-sm-12">
+            <div class = "row" id="display-info">
+            <div class="col-md-4 col-lg-4 col-sm-12 details-info p-4">
             <p class="fw-bold my-2">Main Feature:</p>
             <ul>
             <li><small>${data.mainFeatures.chipSet}</small></li>
@@ -101,13 +105,17 @@ const displayDetails = (data) =>{
             <li><small>${data.mainFeatures.storage}</small></li>
             </ul>
         </div>
-        <div class="col-md-2 col-lg-2 col-sm-12 p-4">
+        <div class="col-md-3 col-lg-3 col-sm-12 details-info p-4">
             <p class="fw-bold my-2">Sensors:</p>
             <ul id="sensor-details">
             </ul>
         </div>
-        <div id="display-other" class="col-md-4 col-lg-4 col-sm-12 p-4">
+        <div id="display-other" class="col-md-5 col-lg-5 col-sm-12 details-info p-4">   
+        </div>
             
+            </div>
+
+            </div>
         </div>
     `;
 
@@ -137,7 +145,7 @@ const displayDetails = (data) =>{
             const otherLi = document.createElement("li");
     
             otherLi.innerHTML = `
-            <small>${key}: ${others[key]}</small>
+            <small><span class = "fw-bold">${key}:</span> ${others[key]}</small>
             `;
             otherDetails.appendChild(otherLi);
         }
