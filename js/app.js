@@ -59,10 +59,40 @@ const displayData =(data)=>{
 
             document.getElementById('phone-details').innerHTML = "";
             displayPhone.appendChild(div);
+            document.getElementById("show-all-button").style.display="block"
             phoneCount++;
     
             }
         }
+
+        document.getElementById("show-all-button").addEventListener("click", function(){
+            const displayPhone = document.getElementById("display-phone");
+            displayPhone.innerHTML = "";
+            phoneError.innerHTML = "";
+            for(const phone of data){
+                const div = document.createElement("div");
+                div.classList.add("col")
+                div.innerHTML = `
+                        <div class="card">
+                            <img src="${phone.image}" class="card-img-top p-4 w-75 m-auto">
+                            <div class="card-body">
+                                <h5 class="card-title fw-bolder">${phone.phone_name}</h5>
+                                <h5 class="card-title">Brand: ${phone.brand}</h5>
+                            </div>
+                            <div class="card-footer bg-white">
+                                <div class="d-grid gap-2">
+                                    <a class="btn fw-bolder" id="details-button" onclick = "loadDetails('${phone.slug}')" href="#phone-details">Details</a>
+                                </div>
+                            </div>
+                        </div>    
+                `;
+                document.getElementById('phone-details').innerHTML = "";
+                displayPhone.appendChild(div);
+                document.getElementById("show-all-button").style.display="none"
+        
+            }                
+
+        })
         toggleSpinner("none")
     }
 }
