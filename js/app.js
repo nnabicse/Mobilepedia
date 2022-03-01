@@ -18,6 +18,7 @@ const displayData =(data)=>{
     const phoneError = document.getElementById("phone-error");
     phoneError.innerHTML = "";
     displayPhone.innerHTML = "";
+
     if(data.length == 0){
         const div = document.createElement("div");
         div.innerHTML = `
@@ -39,7 +40,7 @@ const displayData =(data)=>{
         phoneError.innerHTML = "";
         for(const phone of data){
             if(phoneCount<20){
-                const div = document.createElement("div");
+            const div = document.createElement("div");
             div.classList.add("col")
             div.innerHTML = `
                     <div class="card">
