@@ -22,7 +22,9 @@ const displayData =(data)=>{
         </div>
       </div>
         `
+        document.getElementById('phone-details').innerHTML = "";
         phoneError.appendChild(div);
+
     }
     else{
         const displayPhone = document.getElementById("display-phone");
@@ -46,7 +48,9 @@ const displayData =(data)=>{
                         </div>
                     </div>    
             `;
-    
+
+
+            document.getElementById('phone-details').innerHTML = "";
             displayPhone.appendChild(div);
             phoneCount++;
     
@@ -67,14 +71,20 @@ const displayDetails = (data) =>{
     const phoneDetails = document.getElementById('phone-details');
     phoneDetails.innerHTML = ""
     const divMainFeatures = document.createElement('div');
-    divMainFeatures.classList.add("row", "border", "rounded", "g-0", "mb-5");
+    divMainFeatures.classList.add("row", "border", "rounded", "g-0", "mb-5", "d-flex", "justify-content-center");
     divMainFeatures.innerHTML = `
-        <div class="col-md-4 col-sm-12 p-4 text-center">
-            <img class="w-75" src="${data.image}" alt="">
+    <div class="container mb-2 bg-light">
+            <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12 text-center">
+            <h4 class="fw-bolder">${data.name}</h4>
+            <small class="fw-bold">${data.releaseDate ? data.releaseDate : "no release date available"}</small>
+            </div>
+            </div>
+            </div>
+        <div class="col-md-3 col-lg-3 col-sm-12 p-4 text-center">
+            <img class="w-100" src="${data.image}" alt="">
         </div>
-        <div class="col-md-8 col-sm-12">
-            <h4>${data.name}</h4>
-            <small>${data.releaseDate ? data.releaseDate : "no release date available"}</small>
+        <div class="col-md-3 col-lg-3 col-sm-12 p-4">
             <p class="fw-bold my-2">Main Feature:</p>
             <ul>
             <li><small>${data.mainFeatures.chipSet}</small></li>
@@ -83,12 +93,12 @@ const displayDetails = (data) =>{
             <li><small>${data.mainFeatures.storage}</small></li>
             </ul>
         </div>
-        <div>
+        <div class="col-md-2 col-lg-2 col-sm-12 p-4">
             <p class="fw-bold my-2">Sensor Feature:</p>
             <ul id="sensor-details">
             </ul>
         </div>
-        <div id="display-other">
+        <div id="display-other" class="col-md-4 col-lg-4 col-sm-12 p-4">
             
         </div>
     `;
@@ -114,18 +124,15 @@ const displayDetails = (data) =>{
         </ul>`
 
         const others = data.others;
-        console.log(data.others);
-        const otherKeys = Object.keys(others)
-        console.log(otherKeys);
-        otherKeys.forEach((key, value) => {
+        for (key in others) {
             const otherDetails = document.getElementById('other-details');
             const otherLi = document.createElement("li");
     
             otherLi.innerHTML = `
-            <small>${key}${value}</small>
+            <small>${key} ${others[key]}</small>
             `;
             otherDetails.appendChild(otherLi);
-        })
+        }
 
     }
 }
