@@ -1,10 +1,12 @@
+// Spinner Toggel Function
 const toggleSpinner = (displayStyle) =>{
     document.getElementById("spinner").style.display = displayStyle;
 } 
 
+// Load Data after Clicking Search Button
 const loadData =() =>{
     const searchField = document.getElementById("search-field");
-    toggleSpinner("block");
+    toggleSpinner("block"); //Toggle the spinner while loading
     const searchValue = searchField.value;
     fetch(`https://openapi.programming-hero.com/api/phones?search=${searchValue}`)
     .then(response => response.json())
@@ -12,13 +14,16 @@ const loadData =() =>{
     searchField.value = ""
 }
 
+// Function to display Loaded Data
 const displayData =(data)=>{
-    let phoneCount=0
+
+    let phoneCount=0 //count how many data displayed
     const displayPhone = document.getElementById("display-phone");
     const phoneError = document.getElementById("phone-error");
     phoneError.innerHTML = "";
     displayPhone.innerHTML = "";
 
+    // if search value not matched
     if(data.length == 0){
         const div = document.createElement("div");
         div.innerHTML = `
@@ -39,7 +44,9 @@ const displayData =(data)=>{
         const displayPhone = document.getElementById("display-phone");
         displayPhone.innerHTML = "";
         phoneError.innerHTML = "";
+        //if searchvalue matched 
         for(const phone of data){
+            //display phone untill phone count is 20
             if(phoneCount<20){
             const div = document.createElement("div");
             div.classList.add("col")
@@ -61,16 +68,19 @@ const displayData =(data)=>{
 
             document.getElementById('phone-details').innerHTML = "";
             displayPhone.appendChild(div);
+            //appear show all button
             document.getElementById("show-all-button").style.display="block"
+            // increment phonecount by 1
             phoneCount++;
     
             }
         }
-
+        //if Show All Button is Clicked (Optional)
         document.getElementById("show-all-button").addEventListener("click", function(){
             const displayPhone = document.getElementById("display-phone");
             displayPhone.innerHTML = "";
             phoneError.innerHTML = "";
+            // loop thorough all the phones and display all
             for(const phone of data){
                 const div = document.createElement("div");
                 div.classList.add("col")
@@ -90,6 +100,7 @@ const displayData =(data)=>{
                 `;
                 document.getElementById('phone-details').innerHTML = "";
                 displayPhone.appendChild(div);
+                // hide show all button
                 document.getElementById("show-all-button").style.display="none"
         
             }                
@@ -99,6 +110,7 @@ const displayData =(data)=>{
     }
 }
 
+// load phone details
 const loadDetails = (id) =>{
     toggleSpinner("block")
     fetch(`https://openapi.programming-hero.com/api/phone/${id}`)
@@ -106,7 +118,7 @@ const loadDetails = (id) =>{
     .then(data => displayDetails(data.data))
 }
 
-
+//function to display details
 const displayDetails = (data) =>{
     const phoneDetails = document.getElementById('phone-details');
     toggleSpinner("none")
@@ -154,6 +166,7 @@ const displayDetails = (data) =>{
     phoneDetails.appendChild(divMainFeatures);
     document.getElementById('sensor-details').innerHTML = "";
 
+    //display sensor informations
     for(const sensor of data.mainFeatures.sensors){
         const sensorDetails = document.getElementById('sensor-details');
         const sensorLi = document.createElement("li");
@@ -163,6 +176,7 @@ const displayDetails = (data) =>{
         sensorDetails.appendChild(sensorLi);
     }
 
+    //display others info if available
     if(data.others!=undefined){
         document.getElementById('display-other').innerHTML = "";
         const displayOther = document.getElementById("display-other");
