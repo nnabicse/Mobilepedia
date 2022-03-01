@@ -84,7 +84,7 @@ const displayDetails = (data) =>{
     <div class="container mb-2 bg-light">
             <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-12 text-center">
-            <h4 class="fw-bolder">${data.name}</h4>
+            <h4 class="fw-bolder">${data.brand} ${data.name}</h4>
             <small class="fw-bold">${data.releaseDate ? data.releaseDate : "no release date available"}</small>
             </div>
             </div>
