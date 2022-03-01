@@ -135,10 +135,10 @@ const displayDetails = (data) =>{
             <div class="col-md-4 col-lg-4 col-sm-12 details-info p-4">
             <p class="fw-bold my-2">Main Feature:</p>
             <ul>
-            <li><small>${data.mainFeatures.chipSet}</small></li>
-            <li><small>${data.mainFeatures.displaySize}</small></li>
-            <li><small>${data.mainFeatures.memory}</small></li>
-            <li><small>${data.mainFeatures.storage}</small></li>
+            <li><small><span class="fw-bold">Chipset: </Span>${data.mainFeatures.chipSet}</small></li>
+            <li><span class="fw-bold">Display: </Span><small>${data.mainFeatures.displaySize}</small></li>
+            <li><small><span class="fw-bold">Memory: </Span>${data.mainFeatures.memory}</small></li>
+            <li><small><span class="fw-bold">Storage: </Span>${data.mainFeatures.storage}</small></li>
             </ul>
             </div>
         <div class="col-md-3 col-lg-3 col-sm-12 details-info p-4">
