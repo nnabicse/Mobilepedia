@@ -30,6 +30,7 @@ const displayData =(data)=>{
       </div>
         `
         document.getElementById('phone-details').innerHTML = "";
+        document.getElementById("show-all-button").style.display="none"
         phoneError.appendChild(div);
         toggleSpinner("none");
 
@@ -144,11 +145,8 @@ const displayDetails = (data) =>{
         </div>
         <div id="display-other" class="col-md-5 col-lg-5 col-sm-12 details-info p-4">   
         </div>
-            
-            </div>
-
-            </div>
-        
+        </div>
+        </div>
         </div>
         </div>
     `;
@@ -163,7 +161,6 @@ const displayDetails = (data) =>{
         <small>${sensor}</small>
         `;
         sensorDetails.appendChild(sensorLi);
-        console.log(sensor);
     }
 
     if(data.others!=undefined){
