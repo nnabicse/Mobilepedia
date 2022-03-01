@@ -10,28 +10,35 @@
 
     <!-- Link CSS -->
     <link rel="stylesheet" href="css/style.css">
-    
     <title>Mobile-Pedia</title>
 </head>
 <body class=" bg-light">
+    <!-- Header Part Start -->
     <header class="mb-5">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 text-center mb-3">
                     <img class="w-50" src="images/logo.png" alt="logo">
                 </div>
+                <!-- Searchbar Statrt -->
                 <div class="input-group mb-3 w-75 m-auto">
                     <input id="search-field" type="text" class="form-control fw-bold bg-light" placeholder="Search Phone" aria-label="Recipient's username" aria-describedby="button-addon2">
                     <button class="btn btn-outline-secondary fw-bolder text-white" type="button" id="button-addon2" onclick="loadData()">Search</button>
                   </div>
+                  <!-- searchbar End -->
             </div>
         </div>
     </header>
+    <!-- Header End -->
+    <!-- Main Start -->
     <main class="mb-5">
+        <!-- Phone Details Section Start -->
         <section>
             <div class="container" id="phone-details">
             </div>
         </section>
+        <!-- Phone Details Section End -->
+        <!-- Spinner Section Start -->
         <section class="my-5">
             <div class="text-center" id="spinner">
                 <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
@@ -39,6 +46,8 @@
                 </div>
               </div>
         </section>
+        <!-- Spinner Section End -->
+        <!-- Phone Cards Section Start -->
         <section>
             <div class="container">
                 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-lg-3 g-4" id="display-phone">
@@ -47,17 +56,25 @@
                 </div>
             </div>
         </section>
+        <!-- Phone Cards Section End -->
+        <!-- Show All Phones Button Start -->
         <section class="my-5">
             <div class="d-grid gap-2 col-6 mx-auto w-25">
                 <button class="btn fw-bold" id="show-all-button" type="button">Show All Phones</button>
               </div>
         </section>
+        <!-- Show All Phones Button Start -->
     </main>
+    <!-- Main Section End -->
+    <!-- Footer Section Start -->
     <footer class="text-center text-lg-start fixed-bottom">
         <div class="text-center p-1">
           © 2022 Copyright: Nurun Nabi
         </div>
       </footer>
+      <!-- Footer Section End -->
+
+      <!-- Javascript -->
     <script src="js/app.js"></script>
 </body>
 </html>
