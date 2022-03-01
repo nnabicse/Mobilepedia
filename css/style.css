@@ -4,6 +4,13 @@ body{
     font-family: 'Poppins', sans-serif;
 }
 
+#show-all-button{
+    display: block;
+    background-color: #EF6C35;
+    color: white;
+    border-radius: 5px;
+}
+
 #details-button {
     background-color: #EF6C35;
     color: white;

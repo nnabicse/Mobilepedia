@@ -90,7 +90,7 @@ const displayDetails = (data) =>{
             </div>
             </div>
             </div>           
-        <div class="container" id="all-details"> 
+        <div class="container bg-white" id="all-details"> 
         <div class="row details-info">
             <div class="col-md-3 col-lg-3 col-sm-12 p-4 text-center" id="details-image">
             <img class="w-100" src="${data.image}" alt="">
@@ -105,7 +105,7 @@ const displayDetails = (data) =>{
             <li><small>${data.mainFeatures.memory}</small></li>
             <li><small>${data.mainFeatures.storage}</small></li>
             </ul>
-        </div>
+            </div>
         <div class="col-md-3 col-lg-3 col-sm-12 details-info p-4">
             <p class="fw-bold my-2">Sensors:</p>
             <ul id="sensor-details">
