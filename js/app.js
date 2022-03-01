@@ -1,5 +1,10 @@
+const toggleSpinner = (displayStyle) =>{
+    document.getElementById("spinner").style.display = displayStyle;
+} 
+
 const loadData =() =>{
     const searchField = document.getElementById("search-field");
+    toggleSpinner("block");
     const searchValue = searchField.value;
     fetch(`https://openapi.programming-hero.com/api/phones?search=${searchValue}`)
     .then(response => response.json())
@@ -24,6 +29,7 @@ const displayData =(data)=>{
         `
         document.getElementById('phone-details').innerHTML = "";
         phoneError.appendChild(div);
+        toggleSpinner("none");
 
     }
     else{
@@ -56,10 +62,12 @@ const displayData =(data)=>{
     
             }
         }
+        toggleSpinner("none")
     }
 }
 
 const loadDetails = (id) =>{
+    toggleSpinner("block")
     fetch(`https://openapi.programming-hero.com/api/phone/${id}`)
     .then(response => response.json())
     .then(data => displayDetails(data.data))
@@ -67,8 +75,8 @@ const loadDetails = (id) =>{
 
 
 const displayDetails = (data) =>{
-    console.log(data)
     const phoneDetails = document.getElementById('phone-details');
+    toggleSpinner("none")
     phoneDetails.innerHTML = ""
     const divMainFeatures = document.createElement('div');
     divMainFeatures.classList.add("row", "border", "rounded", "g-0", "mb-5", "d-flex", "justify-content-center");
@@ -94,7 +102,7 @@ const displayDetails = (data) =>{
             </ul>
         </div>
         <div class="col-md-2 col-lg-2 col-sm-12 p-4">
-            <p class="fw-bold my-2">Sensor Feature:</p>
+            <p class="fw-bold my-2">Sensors:</p>
             <ul id="sensor-details">
             </ul>
         </div>
@@ -129,10 +137,11 @@ const displayDetails = (data) =>{
             const otherLi = document.createElement("li");
     
             otherLi.innerHTML = `
-            <small>${key} ${others[key]}</small>
+            <small>${key}: ${others[key]}</small>
             `;
             otherDetails.appendChild(otherLi);
         }
 
     }
+    
 }
