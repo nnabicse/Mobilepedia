@@ -6,6 +6,7 @@ const toggleSpinner = (displayStyle) =>{
 // Load Data after Clicking Search Button
 const loadData =() =>{
     const searchField = document.getElementById("search-field");
+    document.getElementById("show-all-button").style.display = "none";
     toggleSpinner("block"); //Toggle the spinner while loading
     const searchValue = searchField.value;
     fetch(`https://openapi.programming-hero.com/api/phones?search=${searchValue}`)
@@ -16,8 +17,6 @@ const loadData =() =>{
 
 // Function to display Loaded Data
 const displayData =(data)=>{
-
-    let phoneCount=0 //count how many data displayed
     const displayPhone = document.getElementById("display-phone");
     const phoneError = document.getElementById("phone-error");
     phoneError.innerHTML = "";
@@ -40,14 +39,15 @@ const displayData =(data)=>{
         toggleSpinner("none");
 
     }
+    //if search value matched
     else{
+        let phoneCount=0 //count how many data displayed
         const displayPhone = document.getElementById("display-phone");
         displayPhone.innerHTML = "";
         phoneError.innerHTML = "";
-        //if searchvalue matched 
-        for(const phone of data){
-            //display phone untill phone count is 20
-            if(phoneCount<20){
+
+        //fucntion to display phone cards
+        const showPhones = (phone) => {
             const div = document.createElement("div");
             div.classList.add("col")
             div.innerHTML = `
@@ -55,7 +55,7 @@ const displayData =(data)=>{
                         <img src="${phone.image}" class="card-img-top p-4 w-75 m-auto">
                         <div class="card-body">
                             <h5 class="card-title fw-bolder">${phone.phone_name}</h5>
-                            <h5 class="card-title">Brand: ${phone.brand}</h5>
+                            <h6 class="card-title fw-bold">Brand: <span class="text-white fw-bolder p-1" id="brand-name">${phone.brand}</span></h6>
                         </div>
                         <div class="card-footer bg-white">
                             <div class="d-grid gap-2">
@@ -64,45 +64,35 @@ const displayData =(data)=>{
                         </div>
                     </div>    
             `;
-
-
-            document.getElementById('phone-details').innerHTML = "";
             displayPhone.appendChild(div);
-            //appear show all button
-            document.getElementById("show-all-button").style.display="block"
+        }
+        //if searchvalue matched 
+        for(const phone of data){
+            //display phone untill phone count is 20
+            if(phoneCount<20){
+                showPhones(phone)
+            document.getElementById('phone-details').innerHTML = "";
             // increment phonecount by 1
             phoneCount++;
     
             }
+            //if 20 phones displayed then show more button will appear
+            if(phoneCount>=20){
+                document.getElementById("show-all-button").style.display="block"
+            }
         }
-        //if Show All Button is Clicked (Optional)
+        //if Show All Button is Clicked
         document.getElementById("show-all-button").addEventListener("click", function(){
             const displayPhone = document.getElementById("display-phone");
             displayPhone.innerHTML = "";
             phoneError.innerHTML = "";
             // loop thorough all the phones and display all
             for(const phone of data){
-                const div = document.createElement("div");
-                div.classList.add("col")
-                div.innerHTML = `
-                        <div class="card">
-                            <img src="${phone.image}" class="card-img-top p-4 w-75 m-auto">
-                            <div class="card-body">
-                                <h5 class="card-title fw-bolder">${phone.phone_name}</h5>
-                                <h5 class="card-title">Brand: ${phone.brand}</h5>
-                            </div>
-                            <div class="card-footer bg-white">
-                                <div class="d-grid gap-2">
-                                    <a class="btn fw-bolder" id="details-button" onclick = "loadDetails('${phone.slug}')" href="#phone-details">Details</a>
-                                </div>
-                            </div>
-                        </div>    
-                `;
+                showPhones(phone)
                 document.getElementById('phone-details').innerHTML = "";
-                displayPhone.appendChild(div);
+
                 // hide show all button
-                document.getElementById("show-all-button").style.display="none"
-        
+                document.getElementById("show-all-button").style.display="none"       
             }                
 
         })
@@ -132,6 +122,7 @@ const displayDetails = (data) =>{
             <h4 class="fw-bolder">${data.brand} ${data.name}</h4>
             <small class="fw-bold">${data.releaseDate ? data.releaseDate : "No Release Date Found"}</small>
             </div>
+            <button class= "btn btn-primary" id="close-button" onclick="toggleDetails()">Close</button>
             </div>
             </div>           
         <div class="container bg-white" id="all-details"> 
@@ -176,7 +167,7 @@ const displayDetails = (data) =>{
         sensorDetails.appendChild(sensorLi);
     }
 
-    //display others info if available
+    //display others information if available
     if(data.others!=undefined){
         document.getElementById('display-other').innerHTML = "";
         const displayOther = document.getElementById("display-other");
@@ -197,4 +188,10 @@ const displayDetails = (data) =>{
 
     }
     
+}
+
+
+//toggle the phone details
+const toggleDetails = () =>{
+    document.getElementById("phone-details").innerHTML = "";
 }

@@ -66,3 +66,42 @@ footer{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 10px;
 }
+
+
+/* brand name highlighted */
+#brand-name{
+    background-color: #EF6C35;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+/* title div css */
+#details-title{
+    position: relative;
+}
+
+/* details close button css */
+#close-button{
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    margin: 0 auto;
+    width: 70px;
+    border: none;
+    background-color: whitesmoke;
+    color: black;
+    font-weight: bolder;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+/* details close button css for small devices */
+@media screen and (max-width: 786px) {
+    #close-button{
+        position: relative;
+        top:auto;
+        right: auto;
+        margin: 0 auto;
+        margin-bottom: 10px;
+    }
+}
