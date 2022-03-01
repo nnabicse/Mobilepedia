@@ -80,7 +80,7 @@ const displayDetails = (data) =>{
     toggleSpinner("none")
     phoneDetails.innerHTML = ""
     const divMainFeatures = document.createElement('div');
-    divMainFeatures.classList.add("row", "g-0", "mb-5", "d-flex", "justify-content-center", "rounded");
+    divMainFeatures.classList.add("row", "g-0", "mb-5");
     divMainFeatures.innerHTML = `
     <div class="container mb-2" id = "details-title">
             <div class="row">
@@ -90,6 +90,7 @@ const displayDetails = (data) =>{
             </div>
             </div>
             </div>           
+        <div class="container" id="all-details"> 
         <div class="row details-info">
             <div class="col-md-3 col-lg-3 col-sm-12 p-4 text-center" id="details-image">
             <img class="w-100" src="${data.image}" alt="">
@@ -116,6 +117,8 @@ const displayDetails = (data) =>{
             </div>
 
             </div>
+        
+        </div>
         </div>
     `;
 

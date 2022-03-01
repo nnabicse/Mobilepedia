@@ -21,25 +21,22 @@ footer{
     color: white;
 }
 
-#details-image{
+/* #details-image{
     background-color: white;
-    margin-bottom: 10px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 10px;
-}
+} */
 
 #details-title{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 10px;
 }
 
-
+/* 
 #display-info{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 10px;
-    margin-bottom: 10px;
-    margin-left: 10px;
-}
+} */
 
 .card{
     border: none;
@@ -51,4 +48,9 @@ footer{
     border: none;
     border-radius: 20px;
     margin-bottom: 5px;
+}
+
+#all-details{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 10px;
 }
