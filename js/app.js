@@ -128,8 +128,4 @@ const displayDetails = (data) =>{
         })
 
     }
-    // else{
-    //     const para =  document.getElementById("other-feature");
-    //     para.style.display = "none";
-    // }
 }
