@@ -1,14 +1,18 @@
+/* Google Fonts Imported */
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
-
+/* Applied Google fonts in Body */
 body{
     font-family: 'Poppins', sans-serif;
 }
 
+
+/* Spninner no visible by Default  */
 #spinner{
     display: none;
 }
 
+/* Show All Button CSS */
 #show-all-button{
     display: none;
     background-color: #EF6C35;
@@ -16,40 +20,48 @@ body{
     border-radius: 5px;
 }
 
+/* Details Button CSS */
 #details-button {
     background-color: #EF6C35;
     color: white;
 }
+
+/* SearchBar Button CSS */
 #button-addon2{
     background-color: #EF6C35;
 }
+
+/* Footer CSS */
 footer{
     background-color: #fa824e;
     color: white;
 }
 
+/* Phone Details Titile CSS */
 #details-title{
     background-color: #EF6C35;
     color: white;
-}
-
-#details-title{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 10px;
 }
 
+
+/* Phone Cards CSS */
 .card{
     border: none;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 10px;
 }
 
+
+/* Cards Footer CSS */
 .card-footer{
     border: none;
     border-radius: 20px;
     margin-bottom: 5px;
 }
 
+/* Phone Details Div CSS */
 #all-details{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 10px;
